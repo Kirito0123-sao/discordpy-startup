@@ -82,5 +82,30 @@ async def servericon(ctx):
     await ctx.send(ctx.guild.icon_url)    
 
 
+@bot.command()
+async def whoami(ctx):
+    user = ctx.message.author
+    await ctx.send(
+        "<@{0.id}> Here is what I know about you:\n"
+        "Display name: {0.display_name}\n"
+        "Username: {0.name}\n"
+        "Discriminator: {0.discriminator}\n"
+        "ID: {0.id}\n".format(user))    
+    
+    
+@bot.command()
+async def join(ctx):
+    print("Joining {0.author}'s channel...".format(ctx))
+
+
+@bot.command()
+async def leave(ctx):
+    print("Leaving {0.author}'s channel...".format(ctx))
+
+
+@bot.command()
+async def play(ctx, args):
+    print("Playing ??? on {0.author}'s channel...".format(ctx))    
+    
     
 bot.run(token)
