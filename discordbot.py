@@ -92,6 +92,16 @@ async def whoami(ctx):
         "Discriminator: {0.discriminator}\n"
         "ID: {0.id}\n".format(user))    
     
+
+@bot.command()
+async def quit(ctx):
+    print(
+        "[CRITICAL] {0.author} sent a command to shutdown the bot. Closing connection...".format(ctx))
+    await ctx.send("I'm going to sleep :sleeping: see you soon! :blush:")
+    await say_goodbye_to_status_channel()
+    await bot.logout()
+    
+    
     
 @bot.command()
 async def join(ctx):
