@@ -77,4 +77,8 @@ async def avatar(ctx, *,  avamember : discord.Member=None):
     userAvatarUrl = avamember.avatar_url
     await ctx.send(userAvatarUrl)
 
+@bot.command()
+async def servericon(ctx):
+    await ctx.send(discord.Guild.icon_url)    
+    
 bot.run(token)
