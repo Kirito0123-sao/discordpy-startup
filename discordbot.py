@@ -2,7 +2,7 @@ from discord.ext import commands
 import os
 import traceback
 
-
+import inspect
 
 
 bot = commands.Bot(command_prefix='kyon4545+')
@@ -42,7 +42,13 @@ async def square(ctx, number: int):
 async def channel(ctx): 
     await bot.create_channel(ctx.message.server, 'test', type=discord.ChannelType.text)    
 
-    
+@bot.command(name='eval', pass_context=True)
+async def eval_(ctx, *, command):
+    res = eval(command)
+    if inspect.isawaitable(res):
+        await bot.say(await res)
+    else:
+        await bot.say(res)    
     
 
 bot.run(token)
