@@ -22,9 +22,5 @@ async def ping(ctx):
 async def say(ctx, arg):
     await ctx.send(arg)
 
-    
-@bot.command()
-async def test(ctx, *, arg):
-    await ctx.send(arg)    
-       
+
 bot.run(token)
