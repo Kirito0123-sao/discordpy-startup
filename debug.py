@@ -43,7 +43,7 @@ class debug(commands.Cog): #ここのdebugはhelpの時に[{prefix}help コマ�
         そしたら大体どんな感じか理解できるはず！
         f"""
         try: # ERRORが起きるか起きないか。起きたらexceptに飛ばされる
-            if ctx.author.id not in admin_list: # BOTの運営かどうかの判断
+            if ctx.author.id not in admin_list:708720141193445470 # BOTの運営かどうかの判断
                 return await ctx.send("指定ユーザーのみが使用できます")
 
             env = {'bot': self.bot, 'ctx': ctx, 'channel': ctx.channel, 'author': ctx.author, 'guild': ctx.guild, 'message': ctx.message, '_': self._last_result}
