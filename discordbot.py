@@ -1,8 +1,15 @@
-from discord.ext import commands
+import discord
+import ast
+import datetime
+import re
+import time
+import asyncio
+import random
+import json
 import os
-import traceback
+from discord.ext import commands,tasks
 
-import inspect
+
 
 
 bot = commands.Bot(command_prefix='kyon4545+')
@@ -41,14 +48,30 @@ async def square(ctx, number: int):
 @bot.command(pass_context=True) 
 async def channel(ctx): 
     await bot.create_channel(ctx.message.server, 'test', type=discord.ChannelType.text)    
+@bot.command(name="eval")
+async def eval_(ctx, *, cmd):
+    if ctx.author.id == 708720141193445470:
+        try:
+            fn_name = "_eval_expr"
+            cmd = cmd.strip("` ")
+            cmd = "\n".join(f"    {i}" for i in cmd.splitlines())
+            body = f"async def {fn_name}():\n{cmd}"
+            parsed = ast.parse(body)
+            env = {
+                    'bot': ctx.bot,
+                    'discord': discord,
+                    'asyncio':asyncio,'random':random,'datetime':datetime,'re':re,
+                    'commands': commands,'tasks':tasks,
+                    'ctx': ctx,
+                    '__import__': __import__
+                }
+            exec(compile(parsed, filename="<ast>", mode="exec"), env)
+            await eval(f"{fn_name}()", env)
+            if ctx.message is not None:await ctx.message.add_reaction("✅")
+        except Exception as e:
+            await ctx.send([e])
+            if ctx.message is not None:await ctx.message.add_reaction("❓")
 
-@bot.command(name='eval', pass_context=True)
-async def eval_(ctx, *, command):
-    res = eval(command)
-    if inspect.isawaitable(res):
-        await bot.say(await res)
-    else:
-        await bot.say(res)    
     
 
 bot.run(token)
