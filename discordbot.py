@@ -72,6 +72,11 @@ async def eval_(ctx, *, cmd):
             await ctx.send([e])
             if ctx.message is not None:await ctx.message.add_reaction("❓")
 
-    
+@commands.command()
+    async def maru(self, ctx, *, member: discord.Member = None):
+        """アバターを丸にする"""
+
+        # ユーザーが指定されていなかった場合、メッセージを送信したユーザーを使用します。
+        member = member or ctx.author
 
 bot.run(token)
