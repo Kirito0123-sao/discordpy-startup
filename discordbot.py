@@ -23,7 +23,7 @@ async def say(ctx, arg):
     await ctx.send(arg)
 
 @bot.command()
-async def test(ctx, *, arg):
+async def say(ctx, *, arg):
     await ctx.send(arg)   
 
     
