@@ -72,6 +72,9 @@ async def eval_(ctx, *, cmd):
             await ctx.send([e])
             if ctx.message is not None:await ctx.message.add_reaction("❓")
 
-
+@bot.command()
+async def avatar(ctx, *,  avamember : discord.Member=None):
+    userAvatarUrl = avamember.avatar_url
+    await ctx.send(userAvatarUrl)
 
 bot.run(token)
