@@ -80,5 +80,9 @@ async def avatar(ctx, *,  avamember : discord.Member=None):
 @bot.command()
 async def servericon(ctx):
     await ctx.send(ctx.guild.icon_url)    
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send(f"🏓 Pong! {round(bot.latency*1000)}ms")    
     
 bot.run(token)
