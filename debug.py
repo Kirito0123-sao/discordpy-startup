@@ -1,3 +1,16 @@
+import asyncio
+import io
+import traceback
+import textwrap
+import contextlib
+import json
+import glob
+
+from discord.ext import commands
+from discord import NotFound, Embed,  Forbidden
+from .detabase import database
+from all_data.all_data import admin_list, prefix 
+ 
  @commands.command(name='eval', pass_context=True, description="※運営専用コマンド") # コマンド名:『eval』 省略コマンド:『なし』
     @commands.bot_has_permissions(read_messages=True, send_messages=True, embed_links=True, add_reactions=True, manage_messages=True, read_message_history=True) #これ絶対消しちゃダメ
     async def evals(self, ctx): #既に存在する関数名だったらERROR出るのでもし今後コマンドを追加するならコマンド名と同じ関数名にして下さい。(ここは例外)
@@ -9,7 +22,6 @@
         try: # ERRORが起きるか起きないか。起きたらexceptに飛ばされる
             if ctx.author.id not in admin_list: # BOTの運営かどうかの判断
                 return await ctx.send("指定ユーザーのみが使用できます")
-
             env = {'bot': self.bot, 'ctx': ctx, 'channel': ctx.channel, 'author': ctx.author, 'guild': ctx.guild, 'message': ctx.message, '_': self._last_result}
             env.update(globals())
             body = cleanup_code(ctx.message.content[6:].lstrip())
