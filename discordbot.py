@@ -2,6 +2,14 @@ from discord.ext import commands
 import os
 import traceback
 
+import asyncio
+import io
+import textwrap
+import contextlib
+import json
+import glob
+
+
 bot = commands.Bot(command_prefix='kyon4545+')
 token = os.environ['DISCORD_BOT_TOKEN']
 
