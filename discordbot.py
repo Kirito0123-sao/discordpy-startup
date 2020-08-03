@@ -28,7 +28,7 @@ async def test(ctx, *, arg):
 
     
 @bot.command()
-async def multiply(ctx, one: int, two: int):
+async def *(ctx, one: int, two: int):
     """ 掛け算 """
     await ctx.send(one * two)
 
