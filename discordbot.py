@@ -39,5 +39,10 @@ async def square(ctx, number: int):
 async def channel(ctx): 
     await bot.create_channel(ctx.message.server, 'test', type=discord.ChannelType.text)    
     
- 
+ @bot.command()
+async def avatar(ctx):
+author = message.author
+await message.channel.send(author.avatar_url)
+
+
 bot.run(token)
