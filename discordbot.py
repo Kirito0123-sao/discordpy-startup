@@ -106,6 +106,12 @@ async def leave(ctx):
 @bot.command()
 async def play(ctx, args):
     print("Playing ??? on {0.author}'s channel...".format(ctx))    
+
     
+@bot.listen()
+async def on_ready():
+    print("[INFO] Bot ready and connected to Discord")
+    await set_now_playing("/help")
+    await say_hello_to_status_channel()    
     
 bot.run(token)
