@@ -10,6 +10,32 @@ import json
 import glob
 
 
+from discord.ext import commands
+from discord import NotFound, Embed,  Forbidden
+from .detabase import database
+from all_data.all_data import admin_list, prefix
+
+def cleanup_code(content):
+    if content.startswith('```') and content.endswith('```'):
+        return '\n'.join(content.split('\n')[1:-1])
+    return content.strip('` \n')
+
+def get_syntax_error(e):
+    if e.text is None:
+        return f'```py\n{e.__class__.__name__}: {e}\n```'
+    return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
+
+def mention_to_user_id(mention):
+    user_id = mention.strip("<@").strip(">")
+    if user_id.find("!") != -1:
+        user_id = user_id.strip("!")
+    return int(user_id)
+
+class debug(commands.Cog): #ここのdebugはhelpの時に[{prefix}help コマンド名]としたときにこのファイルのコマンドが指定されたときにクラス名を取得するので変える場合はhelpの中も変えてください。
+    def __init__(self, bot):
+        self.bot = bot
+        self._last_result = None
+
 bot = commands.Bot(command_prefix='kyon4545+')
 token = os.environ['DISCORD_BOT_TOKEN']
 
