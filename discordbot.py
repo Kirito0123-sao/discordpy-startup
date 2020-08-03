@@ -29,12 +29,12 @@ async def test(ctx, *, arg):
     
 @bot.command()
 async def multiply(ctx, one: int, two: int):
-    """ 数を掛ける """
+    """ 掛け算 """
     await ctx.send(one * two)
 
 @bot.command()
 async def square(ctx, number: int):
-    """ 数を二乗する """
+    """ 二乗 """
     # `!multiply <number> <number>` と同じ
     await ctx.invoke(multiply, number, number)
     
