@@ -83,6 +83,6 @@ async def servericon(ctx):
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send(ctx.🏓 Pong! {round(bot.latency*1000)}ms")    
+    await ctx.send("🏓 Pong! {round(bot.latency*1000)}ms")    
     
 bot.run(token)
