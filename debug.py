@@ -6,6 +6,10 @@ import contextlib
 import json
 import glob
 
+bot = commands.Bot(command_prefix='kyon4545+')
+token = os.environ['DISCORD_BOT_TOKEN']
+
+
 from discord.ext import commands
 from discord import NotFound, Embed,  Forbidden
 from .detabase import database
