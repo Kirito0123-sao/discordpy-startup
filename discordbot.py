@@ -34,7 +34,7 @@ async def 掛け算(ctx, one: int, two: int):
 @bot.command()
 async def 二乗(ctx, number: int):
     # `!multiply <number> <number>` と同じ
-    await ctx.invoke(multiply, number, number)   
+    await ctx.invoke(二乗, number, number)   
     
  
 bot.run(token)
