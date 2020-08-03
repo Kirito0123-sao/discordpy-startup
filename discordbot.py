@@ -26,4 +26,15 @@ async def say(ctx, arg):
 async def test(ctx, *, arg):
     await ctx.send(arg)   
 
+    
+ @bot.command()
+async def 掛け算(ctx, one: int, two: int):
+    await ctx.send(one * two)
+
+@bot.command()
+async def 二乗(ctx, number: int):
+    # `!multiply <number> <number>` と同じ
+    await ctx.invoke(multiply, number, number)   
+    
+ 
 bot.run(token)
