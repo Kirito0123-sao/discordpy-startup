@@ -86,9 +86,9 @@ async def servericon(ctx):
 async def whoami(ctx):
     user = ctx.message.author
     await ctx.send(
-        "<@{0.id}> Here is what I know about you:\n"
-        "Display name: {0.display_name}\n"
-        "Username: {0.name}\n"
+        "<@{0.id}> :useinfo\n"
+        "ニックネーム: {0.display_name}\n"
+        "ユーザー名: {0.name}\n"
         "Discriminator: {0.discriminator}\n"
         "ID: {0.id}\n".format(user))    
     
