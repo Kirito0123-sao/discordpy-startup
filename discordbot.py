@@ -17,13 +17,9 @@ async def on_command_error(ctx, error):
 async def ping(ctx):
     await ctx.send('pong')
 
-    
-@bot.command()
-async def say(ctx, arg):
-    await ctx.send(arg)
 
 @bot.command()
-async def test(ctx, *, arg):
+async def say(ctx, *, arg):
     await ctx.send(arg)   
 
     
@@ -39,9 +35,7 @@ async def square(ctx, number: int):
     await ctx.invoke(multiply, number, number)
     
     
-@bot.command(pass_context=True) 
-async def channel(ctx): 
-    await bot.create_channel(ctx.message.server, 'test', type=discord.ChannelType.text)    
+
     
  
 bot.run(token)
