@@ -35,7 +35,9 @@ async def square(ctx, number: int):
     await ctx.invoke(multiply, number, number)
     
     
-
+@bot.command(pass_context=True) 
+async def channel(ctx): 
+    await bot.create_channel(ctx.message.server, 'test', type=discord.ChannelType.text)    
     
  
 bot.run(token)
