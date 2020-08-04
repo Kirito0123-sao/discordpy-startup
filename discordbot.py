@@ -154,20 +154,6 @@ async def on_command_error(ctx,error):
     if isinstance(error,commands.CommandNotFound):
         await ctx.send(f"コマンドは存在しません")
 
-@bot.command(aliases=["user"])
-@commands.cooldown(1, 5, commands.BucketType.user)
-@commands.guild_only()
-async def userinfo(ctx, member : discord.Member = None):
-    if member == None:
-        embed = discord.Embed(title="Informacje o Użytkowniku", color=0x03fc24, timestamp = datetime.datetime.utcnow())
-        embed.add_field(name="Użytkownik:", value=f"{ctx.author.mention}", inline=False)
-        embed.add_field(name="Nazwa Użytkownika:", value=f"{ctx.author}", inline=False)
-        embed.add_field(name="Id Użytkownika:", value=f"{ctx.author.id}", inline=False)
-        embed.add_field(name="Pseudonim:", value=f"{ctx.author.display_name}", inline=False)
-        if ctx.author.status == "status.online":
-            embed.add_field(name="Status:", value=f"Online Emoji", inline=False)
-        if ctx.author.status == "status.idle":
-            embed.add_field(name="Status:", value=f"Idle Emoji", inline=False)
-        await ctx.channel.send(embed=embed)
+
         
 bot.run(token)
