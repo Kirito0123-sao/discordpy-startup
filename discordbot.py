@@ -154,7 +154,7 @@ async def on_member_join(member):
 @bot.command()
 async def userinfo(ctx):
     user = ctx.message.author 
-embed=discord.Embed()
+embed = discord.Embed (title="Enjoy Python", description="kyon4545<:masscheart:740169772615860253>", color=0xeee657)
 embed.add_field(name="userinfo", value="undefined", inline=False)
 embed.add_field(name="ニックネーム", value="{0.display_name}", inline=True)
 embed.add_field(name="ユーザー名", value="{0.name}", inline=False)
