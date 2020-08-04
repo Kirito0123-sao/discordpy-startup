@@ -160,7 +160,7 @@ embed.add_field(name="ニックネーム", value="{0.display_name}", inline=True
 embed.add_field(name="ユーザー名", value="{0.name}", inline=False)
 embed.add_field(name="Discriminator", value="{0.discriminator}", inline=False)
 embed.add_field(name="ID", value="{0.id}", inline=True)
-await self.bot.say(embed=embed)    
+await ctx.send (embed=embed)  
     
     
 bot.run(token)
