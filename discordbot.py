@@ -149,6 +149,9 @@ async def on_member_join(member):
     e.add_field (name="参加ありがとうございます:", value=f"{member.mention}", inline=False)
     await channel.send (embed=e)    
 
-    
+@bot.event
+async def on_command_error(ctx,error):
+    if isinstance(error,commands.CommandNotFound):
+        await ctx.send(f"コマンドは存在しません")
 
 bot.run(token)
