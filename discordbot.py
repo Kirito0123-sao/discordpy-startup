@@ -149,17 +149,5 @@ async def on_member_join(member):
     e.add_field (name="参加ありがとうございます:", value=f"{member.mention}", inline=False)
     await channel.send (embed=e)    
     
-
-    
-@bot.command()
-async def userinfo(ctx):
-embed = discord.Embed (title="Enjoy Python", description="kyon4545<:masscheart:740169772615860253>", color=0xeee657)
-embed.add_field(name="userinfo", value="undefined", inline=False)
-embed.add_field(name="ニックネーム", value="{0.display_name}", inline=True)
-embed.add_field(name="ユーザー名", value="{0.name}", inline=False)
-embed.add_field(name="Discriminator", value="{0.discriminator}", inline=False)
-embed.add_field(name="ID", value="{0.id}", inline=True)
-await ctx.send (embed=embed)  
-    
     
 bot.run(token)
