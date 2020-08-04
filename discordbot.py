@@ -150,11 +150,11 @@ async def on_member_join(member):
     await channel.send (embed=e)    
 
     
-@bot.command()
-@commands.has_permissions (administrator=True)
-async def kick(ctx, member: discord.Member, *, reason=None):
-    await member.kick (reason=reason)
-    embed = discord.Embed (title=f'実行者:{ctx.author}', description=f"KICKが成功しました:{member.mention}",color=0xff0000)
+@bot.command ()
+@commands.has_permissions (BAN_MEMBERS *)
+async def ban(ctx, member: discord.Member, *, reason=None):
+    await member.ban(reason=reason)
+    embed=discord.Embed (title=f'実行者:{ctx.author}', description=f"BANが成功しました:{member.mention}", color=0xff0000)
     embed.add_field (name=f"{member.id}", value=f"{ctx.author.created_at}", inline=False)
     await ctx.send (embed=embed)
   　　    
