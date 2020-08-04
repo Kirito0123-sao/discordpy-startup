@@ -154,17 +154,20 @@ async def on_command_error(ctx,error):
     if isinstance(error,commands.CommandNotFound):
         await ctx.send(f"コマンドは存在しません")
 
-@client.command()
-async def userinfo( member: discord.Member):
-    embed=discord.Embed(title='User Info',description='Description',color=0x00ff00)
-    embed.add_field(name='Username:',value=ctx.Member.name,inline=True)
-    embed.add_field(name='Discriminator:',value=ctx.Member.discriminator,inline=True)
-    embed.add_field(name='ID:',value=ctx.member.id,inline=True)
-    embed.add_field(name='Create Date:',value=ctx.Member.created_at.strftime("%m/%d/%Y"),inline=True)
-    embed.add_field(name='Join Date:',value=ctx.Member.joined_at.strftime("%m/%d/%Y"),inline=True)
-    embed.add_field(name='Server:',value=ctx.Member.guild,inline=False)
-    embed.set_footer(text='Footer')
-    await ctx.send(embed=embed)     
-
+@bot.command(aliases=["user"])
+@commands.cooldown(1, 5, commands.BucketType.user)
+@commands.guild_only()
+async def userinfo(ctx, member : discord.Member = None):
+    if member == None:
+        embed = discord.Embed(title="Informacje o Użytkowniku", color=0x03fc24, timestamp = datetime.datetime.utcnow())
+        embed.add_field(name="Użytkownik:", value=f"{ctx.author.mention}", inline=False)
+        embed.add_field(name="Nazwa Użytkownika:", value=f"{ctx.author}", inline=False)
+        embed.add_field(name="Id Użytkownika:", value=f"{ctx.author.id}", inline=False)
+        embed.add_field(name="Pseudonim:", value=f"{ctx.author.display_name}", inline=False)
+        if ctx.author.status == "status.online":
+            embed.add_field(name="Status:", value=f"Online Emoji", inline=False)
+        if ctx.author.status == "status.idle":
+            embed.add_field(name="Status:", value=f"Idle Emoji", inline=False)
+        await ctx.channel.send(embed=embed)
         
 bot.run(token)
