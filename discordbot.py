@@ -107,14 +107,16 @@ async def quit(ctx):
     
     
     
-@bot.command()
+@bot.command(pass_context=True)
 async def join(ctx):
-    print("Joining {0.author}'s channel...".format(ctx))
+    await bot.join_voice_channel(bot.get_channel('739143904347160587'))
 
 
-@bot.command()
+@bot.command(pass_context=True)
 async def leave(ctx):
-    print("Leaving {0.author}'s channel...".format(ctx))
+    voice_client = bot.voice_client_in(ctx.message.server)
+    await voice_client.disconnect()
+
 
 
 @bot.command()
