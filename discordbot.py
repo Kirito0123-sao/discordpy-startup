@@ -155,7 +155,7 @@ async def on_command_error(ctx,error):
         await ctx.send(f"コマンドは存在しません")
 
         
- @client.command(aliases=["whois"])
+ @client.command()
 async def userinfo(ctx, member: discord.Member = None):
     if not member:  # if member is no mentioned
         member = ctx.message.author  # set member as the author
