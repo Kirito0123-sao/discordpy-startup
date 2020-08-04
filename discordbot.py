@@ -25,8 +25,7 @@ async def help(ctx):
     embed.add_field (name="kyon4545+help", value="コマンドのヘルプ", inline=False)
     embed.add_field (name="avatar", value="ユーザーのアイコンを見ます", inline=False)
     embed.add_field (name="servericon", value="サーバーのアイコンを見ます", inline=False)
-    embed.add_field (name="say", value="sayです(?)", inline=False)
-    embed.add_field (name="multiply", value="掛け算をします ", inline=False)
+    embed.add_field (name="say", value="say", inline=False)
     await ctx.send (embed=embed)
 
 
