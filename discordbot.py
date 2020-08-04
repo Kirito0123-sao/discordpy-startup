@@ -154,7 +154,17 @@ async def on_command_error(ctx,error):
     if isinstance(error,commands.CommandNotFound):
         await ctx.send(f"コマンドは存在しません")
 
-        
+@client.command()
+async def userinfo( member: discord.Member):
+    embed=discord.Embed(title='User Info',description='Description',color=0x00ff00)
+    embed.add_field(name='Username:',value=ctx.Member.name,inline=True)
+    embed.add_field(name='Discriminator:',value=ctx.Member.discriminator,inline=True)
+    embed.add_field(name='ID:',value=ctx.member.id,inline=True)
+    embed.add_field(name='Create Date:',value=ctx.Member.created_at.strftime("%m/%d/%Y"),inline=True)
+    embed.add_field(name='Join Date:',value=ctx.Member.joined_at.strftime("%m/%d/%Y"),inline=True)
+    embed.add_field(name='Server:',value=ctx.Member.guild,inline=False)
+    embed.set_footer(text='Footer')
+    await ctx.send(embed=embed)     
 
         
 bot.run(token)
