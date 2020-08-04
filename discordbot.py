@@ -139,5 +139,15 @@ async def on_ready():
     print("[INFO] Bot ready and connected to Discord")
     await set_now_playing("/help")
     await say_hello_to_status_channel()    
+
+    
+@bot.event
+async def on_member_join(member):
+    channel = discord.utils.get (member.guild.text_channels, name='入室ログ')
+    server=member.guild
+    e=discord.Embed (description="サーバー入室ログ")
+    e.add_field (name="参加ありがとうございます:", value=f"{member.mention}", inline=False)
+    await channel.send (embed=e)    
+    
     
 bot.run(token)
