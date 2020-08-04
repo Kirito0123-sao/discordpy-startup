@@ -83,7 +83,7 @@ async def servericon(ctx):
 
 
 @bot.command()
-async def whoami(ctx):
+async def userinfo(ctx):
     user = ctx.message.author
     await ctx.send(
         "<@{0.id}> :useinfo\n"
