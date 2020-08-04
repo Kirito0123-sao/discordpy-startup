@@ -9,8 +9,7 @@ import json
 import os
 from discord.ext import commands,tasks
 import aiohttp
-import youtube_dl
-import ffmpeg
+
 
 
 bot = commands.Bot(command_prefix='kyon4545+')
