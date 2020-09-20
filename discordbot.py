@@ -143,7 +143,7 @@ async def on_ready():
     
 @bot.event
 async def on_member_join(member):
-    channel = discord.utils.get (member.guild.text_channels, name='入室ログ')
+    channel = discord.utils.get (member.guild.text_channels, name='welcom')
     server=member.guild
     e=discord.Embed (description="サーバー入室ログ")
     e.add_field (name="参加ありがとうございます:", value=f"{member.mention}", inline=False)
