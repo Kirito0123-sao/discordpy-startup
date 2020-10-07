@@ -45,7 +45,7 @@ async def ping(ctx):
 @bot.command()
 async def say(ctx, *, arg):
     await ctx.send(arg)   
-    await asyncio.sleep(1000)
+    await time.sleep(1000)
     
 @bot.command()
 async def multiply(ctx, one: int, two: int):
