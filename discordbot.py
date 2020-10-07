@@ -156,17 +156,6 @@ async def on_command_error(ctx,error):
 
 
 
-@bot.event
-async def greet(ctx):
-        channel = message.channel
-        await channel.send('こんにちはと送信してね！')
-
-        def hello_check(m):
-            return m.content == 'こんにちは' and m.channel == channel
-
-        msg = await client.wait_for('message', check=hello_check)
-        await channel.send(f'{msg.author.mention}、こんにちは！')
-
 
 
 bot.run(token)
