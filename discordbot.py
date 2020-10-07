@@ -41,11 +41,12 @@ async def on_command_error(ctx, error):
 async def ping(ctx):
     await ctx.send('pong')
 
-
+    
+  
 @bot.command()
-async def say(ctx, *, arg):
-    await ctx.send(arg)   
-    await time.sleep(1000)
+async def say(ctx, *, arg):   
+    await asyncio.sleep(10)
+    await ctx.send(arg)
     
 @bot.command()
 async def multiply(ctx, one: int, two: int):
